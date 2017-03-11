@@ -1,19 +1,20 @@
 ﻿@{ 
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<body class="nav-md">
+    <div class="container body">
+        <div class="main_container">
 
-<div class="container body">
-    <div class="main_container">
+            @Html.Partial("_MenuPartial")
 
-        @Html.Partial("_MenuPartial")
+            @Html.Partial("_MenuTopPartial")
 
-        @Html.Partial("_MenuTopPartial")
-
-        <!-- page content -->
-        <div class="right_col" role="main">
-            @RenderBody()              
+            <!-- page content -->
+            <div class="right_col" role="main">
+                @RenderBody()
+            </div>
+            <!-- /page content -->
+            @Html.Partial("_FooterPartial")
         </div>
-        <!-- /page content -->
-        @Html.Partial("_FooterPartial")
     </div>
-</div>
+</body>
