@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Persets.Frontend", "Persets.Frontend\Persets.Frontend.csproj", "{0C4EF189-4D49-4432-A260-7F916EF71782}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Persets.Backend", "Persets.Backend\Persets.Backend.csproj", "{369CE9D5-AE04-4468-B3A4-21F0159E91A0}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0C4EF189-4D49-4432-A260-7F916EF71782}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0C4EF189-4D49-4432-A260-7F916EF71782}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0C4EF189-4D49-4432-A260-7F916EF71782}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0C4EF189-4D49-4432-A260-7F916EF71782}.Release|Any CPU.Build.0 = Release|Any CPU
+		{369CE9D5-AE04-4468-B3A4-21F0159E91A0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{369CE9D5-AE04-4468-B3A4-21F0159E91A0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{369CE9D5-AE04-4468-B3A4-21F0159E91A0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{369CE9D5-AE04-4468-B3A4-21F0159E91A0}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
