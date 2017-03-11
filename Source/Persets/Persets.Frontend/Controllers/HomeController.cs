@@ -6,7 +6,7 @@ using System.Web.Mvc;
 
 namespace Persets.Frontend.Controllers
 {
-    public class HomeController : Controller
+    public class HomeController : GlobalController
     {
         // GET: Home
         public ActionResult Index()
