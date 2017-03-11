@@ -120,22 +120,58 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Global.asax" />
+    <Content Include="Models\Persist.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Persist.edmx</DependentUpon>
+      <LastGenOutput>Persist.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\Persist.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Persist.edmx</DependentUpon>
+      <LastGenOutput>Persist.cs</LastGenOutput>
+    </Content>
     <Content Include="scripts\ai.0.22.9-build00167.js" />
     <Content Include="scripts\ai.0.22.9-build00167.min.js" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\ContentController.cs" />
     <Compile Include="Controllers\CategoryController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\PersetsDB.Designer.cs">
+    <Compile Include="Models\Categories.cs">
+      <DependentUpon>Persist.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Content.cs">
+      <DependentUpon>Persist.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ContentShareBetweenUsers.cs">
+      <DependentUpon>Persist.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Logs.cs">
+      <DependentUpon>Persist.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Persist.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>PersetsDB.edmx</DependentUpon>
+      <DependentUpon>Persist.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Persist.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Persist.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Persist.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Persist.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Users.cs">
+      <DependentUpon>Persist.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -144,13 +180,13 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <EntityDeploy Include="Models\PersetsDB.edmx">
+    <EntityDeploy Include="Models\Persist.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>PersetsDB.Designer.cs</LastGenOutput>
+      <LastGenOutput>Persist.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="Models\PersetsDB.edmx.diagram">
-      <DependentUpon>PersetsDB.edmx</DependentUpon>
-    </None>
+    <Content Include="Models\Persist.edmx.diagram">
+      <DependentUpon>Persist.edmx</DependentUpon>
+    </Content>
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
