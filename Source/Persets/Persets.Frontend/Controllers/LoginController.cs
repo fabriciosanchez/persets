@@ -14,6 +14,11 @@ namespace Persets.Frontend.Controllers
             return View();
         }
 
+        public ActionResult ForgotPassword()
+        {
+            return View();
+        }
+
         public ActionResult LogIn ()
         {
             return RedirectToAction("Index", "Home");

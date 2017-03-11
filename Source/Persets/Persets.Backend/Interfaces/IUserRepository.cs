@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Persets.Backend.Interfaces
 {
-    interface IUserRepository
+    public interface IUserRepository
     {
         //contracts here
     }
