@@ -1,42 +1,20 @@
-﻿using Persets.Backend.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
+﻿using Persets.Backend.Interfaces;
 using System.Web.Http;
 
 namespace Persets.Backend.Controllers
 {
+
+    [RoutePrefix("api/users")]
     public class UserController : ApiController
     {
-        // GET: api/Usuario
-        public IEnumerable<string> Get()
-        {
-            return new string[] { "value1", "value2" };
-        }
+        private readonly IUserRepository _repository;
 
-        // GET: api/Usuario/5
-        public string Get(int id)
+        public UserController(IUserRepository repository)
         {
-            Users a = new Users();
-
-            return "value";
+            _repository = repository;
         }
+        
 
-        // POST: api/Usuario
-        public void Post([FromBody]string value)
-        {
-        }
 
-        // PUT: api/Usuario/5
-        public void Put(int id, [FromBody]string value)
-        {
-        }
-
-        // DELETE: api/Usuario/5
-        public void Delete(int id)
-        {
-        }
     }
 }
