@@ -19,6 +19,7 @@ namespace Persets.Backend.Models
         {
             this.Content = new HashSet<Content>();
             this.ContentShareBetweenUsers = new HashSet<ContentShareBetweenUsers>();
+            this.Logs = new HashSet<Logs>();
         }
     
         public string GUID { get; set; }
@@ -33,5 +34,7 @@ namespace Persets.Backend.Models
         public virtual ICollection<Content> Content { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ContentShareBetweenUsers> ContentShareBetweenUsers { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Logs> Logs { get; set; }
     }
 }

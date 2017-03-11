@@ -1,4 +1,4 @@
-﻿// T4 code generation is enabled for model 'C:\Users\rogerio.santos\Source\Repos\persets\Source\Persets\Persets.Backend\Models\PersetsDB.edmx'. 
+﻿// T4 code generation is enabled for model 'C:\git\persets\Source\Persets\Persets.Backend\Models\Persist.edmx'. 
 // To enable legacy code generation, change the value of the 'Code Generation Strategy' designer
 // property to 'Legacy ObjectContext'. This property is available in the Properties Window when the model
 // is open in the designer.

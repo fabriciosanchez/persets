@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Persets.Backend.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
@@ -18,6 +19,8 @@ namespace Persets.Backend.Controllers
         // GET: api/Usuario/5
         public string Get(int id)
         {
+            Users a = new Users();
+
             return "value";
         }
 
