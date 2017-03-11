@@ -7,7 +7,7 @@ using System.Web.Http;
 
 namespace Persets.Backend.Controllers
 {
-    public class UsuarioController : ApiController
+    public class UserController : ApiController
     {
         // GET: api/Usuario
         public IEnumerable<string> Get()
