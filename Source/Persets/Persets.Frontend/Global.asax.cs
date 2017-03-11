@@ -16,5 +16,13 @@ namespace Persets.Frontend
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
         }
+
+        public void Session_Start(object sender, EventArgs e)
+        {
+            if (Request.QueryString["lang"] != null)
+            {
+                Session["CurrentCulture"] = Request.QueryString["lang"];
+            }
+        }
     }
 }
