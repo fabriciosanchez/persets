@@ -3510,7 +3510,6 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Views\_Layout.cshtml" />
     <Content Include="scripts\animate.css\.bower.json" />
     <Content Include="scripts\animate.css\animate-config.json" />
     <Content Include="scripts\animate.css\bower.json" />
@@ -4309,6 +4308,11 @@
     <Content Include="scripts\validator\validator.jquery.json" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\_MenuPartial.cshtml" />
+    <Content Include="Views\Shared\_MenuTopPartial.cshtml" />
+    <Content Include="Views\Shared\_FooterPartial.cshtml" />
+    <Content Include="Views\Shared\_LayoutLogged.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
