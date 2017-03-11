@@ -13,5 +13,10 @@ namespace Persets.Frontend.Controllers
         {
             return View();
         }
+
+        public ActionResult ForgotPassword()
+        {
+            return View();
+        }
     }
 }
