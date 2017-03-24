@@ -29,6 +29,7 @@ namespace Persets.Backend.Models
         public System.DateTime BirthdayDate { get; set; }
         public string Password { get; set; }
         public string Avatar { get; set; }
+        public string PasswordSalt { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Content> Content { get; set; }

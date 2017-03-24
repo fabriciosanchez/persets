@@ -1,3 +1,6 @@
+using Persets.Backend.Infrastructure;
+using Persets.Backend.Services;
+
 [assembly: WebActivatorEx.PreApplicationStartMethod(typeof(Persets.Backend.App_Start.NinjectWebCommon), "Start")]
 [assembly: WebActivatorEx.ApplicationShutdownMethodAttribute(typeof(Persets.Backend.App_Start.NinjectWebCommon), "Stop")]
 
@@ -49,6 +52,11 @@ namespace Persets.Backend.App_Start
 
                 //Injecting dependencies
                 kernel.Bind<IUserRepository>().To<UserRepository>();
+                kernel.Bind<IMembershipService>().To<MembershipService>();
+                kernel.Bind<IEncryptionService>().To<EncryptionService>();
+                kernel.Bind<IUnitOfWork>().To<UnitOfWork>();
+                kernel.Bind<IDbFactory>().To<DbFactory>();
+                
 
                 RegisterServices(kernel);
                 return kernel;

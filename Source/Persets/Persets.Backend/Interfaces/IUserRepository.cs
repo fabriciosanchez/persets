@@ -1,13 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Linq;
+using Persets.Backend.Models;
 
 namespace Persets.Backend.Interfaces
 {
     public interface IUserRepository
     {
-        //contracts here
+        void Add(Users pUsers);
+        IQueryable<Users> GetAll();
+        Users GetSingleByUsername(string username);
     }
 }

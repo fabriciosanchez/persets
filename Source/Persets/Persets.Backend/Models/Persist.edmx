@@ -58,6 +58,7 @@
           <Property Name="CompleteName" Type="varchar" MaxLength="255" Nullable="false" />
           <Property Name="BirthdayDate" Type="date" Nullable="false" />
           <Property Name="Password" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="PasswordSalt" Type="varchar" MaxLength="20" Nullable="false" />
           <Property Name="Avatar" Type="varchar" MaxLength="255" />
         </EntityType>
         <Association Name="FK_Content_Categories">
@@ -212,6 +213,7 @@
           <Property Name="CompleteName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="BirthdayDate" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="Password" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PasswordSalt" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Avatar" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Content" Relationship="Self.FK_Content_Users" FromRole="Users" ToRole="Content" />
           <NavigationProperty Name="ContentShareBetweenUsers" Relationship="Self.FK_ContentShareBetweenUsers_Users" FromRole="Users" ToRole="ContentShareBetweenUsers" />
@@ -366,6 +368,7 @@
                 <ScalarProperty Name="CompleteName" ColumnName="CompleteName" />
                 <ScalarProperty Name="BirthdayDate" ColumnName="BirthdayDate" />
                 <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="PasswordSalt" ColumnName="PasswordSalt" />
                 <ScalarProperty Name="Avatar" ColumnName="Avatar" />
               </MappingFragment>
             </EntityTypeMapping>
