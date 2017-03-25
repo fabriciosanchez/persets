@@ -15,14 +15,15 @@ namespace Persets.Frontend
             AreaRegistration.RegisterAllAreas();
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+            FilterConfig.RegisterFilters(GlobalFilters.Filters);
         }
 
         public void Session_Start(object sender, EventArgs e)
         {
-            if (Request.QueryString["lang"] != null)
-            {
-                Session["CurrentCulture"] = Request.QueryString["lang"];
-            }
+            //if (Request.QueryString["lang"] != null)
+            //{
+            //    Session["CurrentCulture"] = Request.QueryString["lang"];
+            //}
         }
     }
 }
