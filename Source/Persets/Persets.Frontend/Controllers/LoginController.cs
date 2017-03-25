@@ -46,11 +46,15 @@ namespace Persets.Frontend.Controllers
         public ActionResult Register(User user)
         {
             HttpController.Initialize();
+
             var response = HttpController.client.PostAsJsonAsync("api/users", user).Result;
             if (response.IsSuccessStatusCode)
                 return RedirectToAction("Index", "Home");
             else
+            {
+                var repsonse = response.Content.ReadAsStringAsync();
                 return View("Register");
+            }
         }
     }
 }

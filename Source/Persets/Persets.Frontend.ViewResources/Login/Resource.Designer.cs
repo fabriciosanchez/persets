@@ -63,9 +63,9 @@ namespace Persets.Frontend.ViewResources.Login {
         /// <summary>
         ///   Looks up a localized string similar to Login.
         /// </summary>
-        public static string Titulo {
+        public static string Title {
             get {
-                return ResourceManager.GetString("Titulo", resourceCulture);
+                return ResourceManager.GetString("Title", resourceCulture);
             }
         }
     }

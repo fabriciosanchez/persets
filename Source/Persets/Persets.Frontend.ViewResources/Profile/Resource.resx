@@ -117,24 +117,36 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Ajuda" xml:space="preserve">
-    <value>Ajuda</value>
-    <comment>Ajuda</comment>
+  <data name="DropdownSelectLanguage" xml:space="preserve">
+    <value>Select</value>
+    <comment>Name of first index of select dropdown language</comment>
   </data>
-  <data name="Configuracao" xml:space="preserve">
-    <value>Configurações</value>
-    <comment>Configurações</comment>
+  <data name="EnglishLanguageName" xml:space="preserve">
+    <value>English</value>
+    <comment>English language name</comment>
+  </data>
+  <data name="Getting" xml:space="preserve">
+    <value>Welcome</value>
+    <comment>Getting</comment>
+  </data>
+  <data name="Help" xml:space="preserve">
+    <value>Help</value>
+    <comment>Help</comment>
   </data>
   <data name="Logout" xml:space="preserve">
     <value>Logout</value>
     <comment>Logout</comment>
   </data>
-  <data name="Perfil" xml:space="preserve">
-    <value>Perfil</value>
-    <comment>Perfil</comment>
+  <data name="PortugueseLanguageName" xml:space="preserve">
+    <value>Portuguese</value>
+    <comment>Portuguese language name</comment>
   </data>
-  <data name="Saudacao" xml:space="preserve">
-    <value>Bem vindo</value>
-    <comment>Saudação</comment>
+  <data name="Profile" xml:space="preserve">
+    <value>Profile</value>
+    <comment>Profile</comment>
+  </data>
+  <data name="Settings" xml:space="preserve">
+    <value>Settings</value>
+    <comment>Settings</comment>
   </data>
 </root>

@@ -61,11 +61,11 @@ namespace Persets.Frontend.ViewResources.Home {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Bem Vindo.
+        ///   Looks up a localized string similar to Welcome.
         /// </summary>
-        public static string Titulo {
+        public static string Title {
             get {
-                return ResourceManager.GetString("Titulo", resourceCulture);
+                return ResourceManager.GetString("Title", resourceCulture);
             }
         }
     }
