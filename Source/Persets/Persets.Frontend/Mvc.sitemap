@@ -3,18 +3,18 @@
             xmlns="http://mvcsitemap.codeplex.com/schemas/MvcSiteMap-File-4.0"
             xsi:schemaLocation="http://mvcsitemap.codeplex.com/schemas/MvcSiteMap-File-4.0 MvcSiteMapSchema.xsd">
 
-  <mvcSiteMapNode title="Página Inicial" controller="Home" action="Index" icon="fa-home">
-    <mvcSiteMapNode title="Usuários" controller="Users" action="Index" icon="fa-user">
-      <mvcSiteMapNode title="Listar" controller="Users" action="Index"/>
-      <mvcSiteMapNode title="Novo" controller="Users" action="New"/>
+  <mvcSiteMapNode title="$resources:Persets.Frontend.ViewResources.Menu.Resource,HomePage" controller="Home" action="Index" icon="fa-home">
+    <mvcSiteMapNode title="$resources:Persets.Frontend.ViewResources.Menu.Resource,UsersPage" controller="Users" action="Index" icon="fa-user">
+      <mvcSiteMapNode title="$resources:Persets.Frontend.ViewResources.Menu.Resource,ListUsersPage" controller="Users" action="Index"/>
+      <mvcSiteMapNode title="$resources:Persets.Frontend.ViewResources.Menu.Resource,NewUserPage" controller="Users" action="New"/>
     </mvcSiteMapNode>
-    <mvcSiteMapNode title="Conteúdo" controller="Content" action="Index" icon="fa-file">
-      <mvcSiteMapNode title="Listar" controller="Content" action="Index"/>
-      <mvcSiteMapNode title="Adicionar" controller="Content" action="Upload" />
+    <mvcSiteMapNode title="$resources:Persets.Frontend.ViewResources.Menu.Resource,ContentPage" controller="Content" action="Index" icon="fa-file">
+      <mvcSiteMapNode title="$resources:Persets.Frontend.ViewResources.Menu.Resource,ListContentPage" controller="Content" action="Index"/>
+      <mvcSiteMapNode title="$resources:Persets.Frontend.ViewResources.Menu.Resource,AddContentPage" controller="Content" action="Upload" />
     </mvcSiteMapNode>
-    <mvcSiteMapNode title="Categorias" controller="Categories" action="Index" icon="fa-list">
-      <mvcSiteMapNode title="Listar" controller="Categories" action="Index"/>
-      <mvcSiteMapNode title="Nova" controller="Categories" action="New"/>
+    <mvcSiteMapNode title="$resources:Persets.Frontend.ViewResources.Menu.Resource,CategoriesPage" controller="Categories" action="Index" icon="fa-list">
+      <mvcSiteMapNode title="$resources:Persets.Frontend.ViewResources.Menu.Resource,ListCategoriesPage" controller="Categories" action="Index"/>
+      <mvcSiteMapNode title="$resources:Persets.Frontend.ViewResources.Menu.Resource,NewCategoryPage" controller="Categories" action="New"/>
     </mvcSiteMapNode>
   </mvcSiteMapNode>
 
