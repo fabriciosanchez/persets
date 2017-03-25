@@ -8,5 +8,6 @@ namespace Persets.Backend.Interfaces
         void Add(Users pUsers);
         IQueryable<Users> GetAll();
         Users GetSingleByUsername(string username);
+        Users GetSingleByEmail(string email);
     }
 }

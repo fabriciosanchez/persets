@@ -8,73 +8,62 @@
         <a class="hiddenanchor" id="signup"></a>
         <a class="hiddenanchor" id="signin"></a>
 
-        <div class="login_wrapper">
-            <div class="animate form login_form">
-                <section class="login_content">
-                    @using (Html.BeginForm("LogIn", "Login", FormMethod.Post))
-                    {
-                        <h1>Parsets</h1>
-                        <h1>Login</h1>
-                        <div>
-                            <input type="text" class="form-control" placeholder="Username" required="" />
-                        </div>
-                        <div>
-                            <input type="password" class="form-control" placeholder="Password" required="" />
-                        </div>
-                        <div>
-                            @*<a class="btn btn-default submit" href="index.html">Log in</a>*@
-                            <input class="btn btn-default submit" type="submit" value="Log In"/>
-                            <a class="reset_pass" href="#">Lost your password?</a>
-                        </div>
+        
+        <div id="login-top" style="padding:25px 0 0; text-align:center;">
+            <h1>Persets</h1>
+            <hr />
+        </div>
+        
+        <div id="login-middle" style="padding-left:20px; width:100%; padding-right:20px; display:inline-block">
+            
+            <div id="login-container-form" style="float:left; margin-right:40px;">
+                <div id="login-form">
+                    <div class="login_wrapper">
+                        <div class="animate form login_form">
+                            <section class="login_content">
+                                @using (Html.BeginForm("LogIn", "Login", FormMethod.Post))
+                                {
+                                    <div>
+                                        <input type="text" class="form-control" placeholder="Username" required="" />
+                                    </div>
+                                    <div>
+                                        <input type="password" class="form-control" placeholder="Password" required="" />
+                                    </div>
+                                    <div>
+                                        @*<a class="btn btn-default submit" href="index.html">Log in</a>*@
+                                        <input class="btn btn-default submit" type="submit" value="Log In" />
+                                        @*<a class="reset_pass" href="#">Lost your password?</a>*@
+                                        @Html.ActionLink("Lost your password?", "ForgotPassword", "Login", new { @class = "reset_pass" }, null)
+                                    </div>
 
-                        <div class="clearfix"></div>
+                                    <div class="clearfix"></div>
 
-                        <div class="separator">
-                            <p class="change_link">
-                                New to site?
-                                <a href="#signup" class="to_register"> Create Account </a>
-                            </p>
+                                    <div class="separator">
+                                        <p class="change_link">
+                                            New to site?
+                                            @*<a href="#signup" class="to_register"> Create Account </a>*@
+                                            @Html.ActionLink("Create account", "Register", "Login", new { @class = "to_register" }, null)
+                                        </p>
 
-                            <div class="clearfix"></div>
-                            <br />
+                                        <div class="clearfix"></div>
+                                        <br />
 
+                                    </div>
+                                }
+                            </section>
                         </div>
-                    }
-                </section>
+                    </div>
+                </div>
             </div>
-
-            <div id="register" class="animate form registration_form">
-                <section class="login_content">
-                    <form>
-                        <h1>Create Account</h1>
-                        <div>
-                            <input type="text" class="form-control" placeholder="Username" required="" />
-                        </div>
-                        <div>
-                            <input type="email" class="form-control" placeholder="Email" required="" />
-                        </div>
-                        <div>
-                            <input type="password" class="form-control" placeholder="Password" required="" />
-                        </div>
-                        <div>
-                            <a class="btn btn-default submit" href="index.html">Submit</a>
-                        </div>
-
-                        <div class="clearfix"></div>
-
-                        <div class="separator">
-                            <p class="change_link">
-                                Already a member ?
-                                <a href="#signin" class="to_register"> Log in </a>
-                            </p>
-
-                            <div class="clearfix"></div>
-                            <br />
-
-                        </div>
-                    </form>
-                </section>
+            
+            <div id="login-text" style="float:left; margin-top:15px;">
+                test right
             </div>
         </div>
+        
+        <div id="login-bottom" style="">
+            <hr />
+        </div>
+        
     </div>
 </body>

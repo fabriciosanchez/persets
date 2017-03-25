@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MvcSiteMapProvider.DI;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,13 +9,24 @@ using System.Web.Routing;
 
 namespace Persets.Frontend
 {
-    public class MvcApplication : System.Web.HttpApplication
+    public class MvcApplication : HttpApplication
     {
         protected void Application_Start()
         {
             AreaRegistration.RegisterAllAreas();
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+            FilterConfig.RegisterFilters(GlobalFilters.Filters);
+
+           Composer.Compose();
+        }
+
+        public void Session_Start(object sender, EventArgs e)
+        {
+            //if (Request.QueryString["lang"] != null)
+            //{
+            //    Session["CurrentCulture"] = Request.QueryString["lang"];
+            //}
         }
     }
 }

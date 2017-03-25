@@ -1,39 +1,133 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Data.Entity;
+using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using System.Web.Http.Description;
+using Persets.Backend.Models;
 
 namespace Persets.Backend.Controllers
 {
     public class CategoryController : ApiController
     {
-        // GET api/<controller>
-        public IEnumerable<string> Get()
+        private PersetsDBEntities db = new PersetsDBEntities();
+
+        // GET: api/Category
+        public IQueryable<Categories> GetCategories()
         {
-            return new string[] { "value1", "value2" };
+            return db.Categories;
         }
 
-        // GET api/<controller>/5
-        public string Get(int id)
+        // GET: api/Category/5
+        [ResponseType(typeof(Categories))]
+        public IHttpActionResult GetCategories(string id)
         {
-            return "value";
+            Categories categories = db.Categories.Find(id);
+            if (categories == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(categories);
         }
 
-        // POST api/<controller>
-        public void Post([FromBody]string value)
+        // PUT: api/Category/5
+        [ResponseType(typeof(void))]
+        public IHttpActionResult PutCategories(string id, Categories categories)
         {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            if (id != categories.GUID)
+            {
+                return BadRequest();
+            }
+
+            db.Entry(categories).State = EntityState.Modified;
+
+            try
+            {
+                db.SaveChanges();
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                if (!CategoriesExists(id))
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    throw;
+                }
+            }
+
+            return StatusCode(HttpStatusCode.NoContent);
         }
 
-        // PUT api/<controller>/5
-        public void Put(int id, [FromBody]string value)
+        // POST: api/Category
+        [ResponseType(typeof(Categories))]
+        public IHttpActionResult PostCategories(Categories categories)
         {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            db.Categories.Add(categories);
+
+            try
+            {
+                db.SaveChanges();
+            }
+            catch (DbUpdateException)
+            {
+                if (CategoriesExists(categories.GUID))
+                {
+                    return Conflict();
+                }
+                else
+                {
+                    throw;
+                }
+            }
+
+            return CreatedAtRoute("DefaultApi", new { id = categories.GUID }, categories);
         }
 
-        // DELETE api/<controller>/5
-        public void Delete(int id)
+        // DELETE: api/Category/5
+        [ResponseType(typeof(Categories))]
+        public IHttpActionResult DeleteCategories(string id)
         {
+            Categories categories = db.Categories.Find(id);
+            if (categories == null)
+            {
+                return NotFound();
+            }
+
+            db.Categories.Remove(categories);
+            db.SaveChanges();
+
+            return Ok(categories);
+        }
+
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                db.Dispose();
+            }
+            base.Dispose(disposing);
+        }
+
+        private bool CategoriesExists(string id)
+        {
+            return db.Categories.Count(e => e.GUID == id) > 0;
         }
     }
 }

@@ -21,7 +21,7 @@ namespace Persets.Frontend
                          "~/scripts/bootstrap/dist/js/bootstrap.js",
                          "~/scripts/bootstrap-progressbar/bootstrap-progressbar.js",
                          "~/scripts/iCheck/icheck.min.js",
-                         "~/content/js/custom.min.js"));
+                         "~/content/js/custom.js"));
         }
     }
 }

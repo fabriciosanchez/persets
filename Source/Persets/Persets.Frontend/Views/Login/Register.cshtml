@@ -1,0 +1,58 @@
+﻿
+@{
+    ViewBag.Title = "Register";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<body class="login">
+    <div>
+        <a class="hiddenanchor" id="signup"></a>
+        <a class="hiddenanchor" id="signin"></a>
+
+        <div class="login_wrapper">
+            <div class="animate form login_form">
+                <section class="login_content">
+                    @using (Html.BeginForm("Register", "Login", FormMethod.Post))
+                    {
+                        <h1>Create Account</h1>
+                        <div>
+                            <input name="UserName" type="text" class="form-control" placeholder="Username" required="" />
+                        </div>
+                        <div>
+                            <input name="Email" type="email" class="form-control" placeholder="Email" required="" />
+                        </div>
+                        <div>
+                            <input name="CompleteName" type="text" class="form-control" placeholder="CompleteName" required="" />
+                        </div>
+                        <div>
+                            <input name="BirthdayDate" type="date" class="form-control" placeholder="BirthDate" required="" />
+                        </div>
+                        <br />
+                        <div>
+                            <input name="Password" type="password" class="form-control" placeholder="Password" required="" />
+                        </div>
+                        <div>
+                            @*<a class="btn btn-default submit" href="index.html">Submit</a>*@
+                            <input class="btn btn-default submit" type="submit" value="Submit" />
+                        </div>
+
+                        <div class="clearfix"></div>
+
+                        <div class="separator">
+                            <p class="change_link">
+                                Already a member ?
+                                @*<a href="#signin" class="to_register"> Log in </a>*@
+                                @Html.ActionLink("Log in", "Index", "Login", new { @class = "to_register" }, null)
+                            </p>
+
+                            <div class="clearfix"></div>
+                            <br />
+
+                        </div>
+                    }
+                </section>
+            </div>
+        </div>
+    </div>
+</body>
+
