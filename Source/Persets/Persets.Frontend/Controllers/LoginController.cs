@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Persets.Frontend.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -17,6 +18,17 @@ namespace Persets.Frontend.Controllers
         public ActionResult ForgotPassword()
         {
             return View();
+        }
+
+        [HttpPost]
+        public ActionResult ForgotPassword(ForgotPasswordModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                //TODO Chamada para a api
+            }
+
+            return View(model);
         }
 
         public ActionResult LogIn ()
