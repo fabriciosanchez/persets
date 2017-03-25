@@ -3,18 +3,18 @@
             xmlns="http://mvcsitemap.codeplex.com/schemas/MvcSiteMap-File-4.0"
             xsi:schemaLocation="http://mvcsitemap.codeplex.com/schemas/MvcSiteMap-File-4.0 MvcSiteMapSchema.xsd">
 
-  <mvcSiteMapNode title="Home" controller="Home" action="Index" icon="fa-home">
-    <mvcSiteMapNode title="Users" controller="Users" action="Index" icon="fa-user">
-      <mvcSiteMapNode title="List Users" controller="Users" action="Index"/>
-      <mvcSiteMapNode title="New User" controller="Users" action="New"/>
+  <mvcSiteMapNode title="Página Inicial" controller="Home" action="Index" icon="fa-home">
+    <mvcSiteMapNode title="Usuários" controller="Users" action="Index" icon="fa-user">
+      <mvcSiteMapNode title="Listar" controller="Users" action="Index"/>
+      <mvcSiteMapNode title="Novo" controller="Users" action="New"/>
     </mvcSiteMapNode>
-    <mvcSiteMapNode title="Content" controller="Content" action="Index" icon="fa-file">
-      <mvcSiteMapNode title="Show Content" controller="Content" action="Index"/>
-      <mvcSiteMapNode title="Upload Content" controller="Content" action="Upload" />
+    <mvcSiteMapNode title="Conteúdo" controller="Content" action="Index" icon="fa-file">
+      <mvcSiteMapNode title="Listar" controller="Content" action="Index"/>
+      <mvcSiteMapNode title="Adicionar" controller="Content" action="Upload" />
     </mvcSiteMapNode>
-    <mvcSiteMapNode title="Categories" controller="Categories" action="Index" icon="fa-list">
-      <mvcSiteMapNode title="List Categories" controller="Categories" action="Index"/>
-      <mvcSiteMapNode title="New Category" controller="Categories" action="New"/>
+    <mvcSiteMapNode title="Categorias" controller="Categories" action="Index" icon="fa-list">
+      <mvcSiteMapNode title="Listar" controller="Categories" action="Index"/>
+      <mvcSiteMapNode title="Nova" controller="Categories" action="New"/>
     </mvcSiteMapNode>
   </mvcSiteMapNode>
 
