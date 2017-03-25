@@ -4658,3 +4658,15 @@ ul.notifications {
 .dataTables_wrapper > .row {
     overflow: auto !important;
 }
+
+#navcontainer ul
+{
+margin: 0;
+padding: 0;
+list-style-type: none;
+}
+
+#navcontainer ul li { 
+    display: inline; 
+    margin:7px;
+}
