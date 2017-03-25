@@ -61,20 +61,38 @@ namespace Persets.Frontend.ViewResources.Profile {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Ajuda.
+        ///   Looks up a localized string similar to Select.
         /// </summary>
-        public static string Ajuda {
+        public static string DropdownSelectLanguage {
             get {
-                return ResourceManager.GetString("Ajuda", resourceCulture);
+                return ResourceManager.GetString("DropdownSelectLanguage", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Configurações.
+        ///   Looks up a localized string similar to English.
         /// </summary>
-        public static string Configuracao {
+        public static string EnglishLanguageName {
             get {
-                return ResourceManager.GetString("Configuracao", resourceCulture);
+                return ResourceManager.GetString("EnglishLanguageName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Welcome.
+        /// </summary>
+        public static string Getting {
+            get {
+                return ResourceManager.GetString("Getting", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Help.
+        /// </summary>
+        public static string Help {
+            get {
+                return ResourceManager.GetString("Help", resourceCulture);
             }
         }
         
@@ -88,20 +106,29 @@ namespace Persets.Frontend.ViewResources.Profile {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Perfil.
+        ///   Looks up a localized string similar to Portuguese.
         /// </summary>
-        public static string Perfil {
+        public static string PortugueseLanguageName {
             get {
-                return ResourceManager.GetString("Perfil", resourceCulture);
+                return ResourceManager.GetString("PortugueseLanguageName", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Bem vindo.
+        ///   Looks up a localized string similar to Profile.
         /// </summary>
-        public static string Saudacao {
+        public static string Profile {
             get {
-                return ResourceManager.GetString("Saudacao", resourceCulture);
+                return ResourceManager.GetString("Profile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Settings.
+        /// </summary>
+        public static string Settings {
+            get {
+                return ResourceManager.GetString("Settings", resourceCulture);
             }
         }
     }

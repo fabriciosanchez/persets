@@ -17,11 +17,36 @@ namespace Persets.Frontend.Controllers
         {
             base.Initialize(requestContext);
 
-            if (Session["CurrentCulture"] != null)
+            if (Session[Constants.CurrentCulture] != null)
             {
-                Thread.CurrentThread.CurrentCulture = new CultureInfo(Session["CurrentCulture"].ToString());
-                Thread.CurrentThread.CurrentUICulture = new CultureInfo(Session["CurrentCulture"].ToString());
+                Thread.CurrentThread.CurrentCulture = new CultureInfo(CurrentCulture);
+                Thread.CurrentThread.CurrentUICulture = new CultureInfo(CurrentCulture);
+            }
+        }
+
+        public ActionResult ChangeLanguage(string language, string currentUrl)
+        {
+            CurrentCulture = language;
+            return Redirect(currentUrl);
+        }
+
+        protected string CurrentCulture
+        {
+            get
+            {
+                var currentLanguage = Session[Constants.CurrentCulture];
+
+                if (currentLanguage != null)
+                    return currentLanguage.ToString();
+
+                return Constants.DefaultLanguage;
+            }
+            set
+            {
+                Session[Constants.CurrentCulture] = value;
             }
         }
     }
+
+
 }
