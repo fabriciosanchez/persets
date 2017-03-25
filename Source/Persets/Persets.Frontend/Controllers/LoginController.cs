@@ -52,8 +52,8 @@ namespace Persets.Frontend.Controllers
                 return RedirectToAction("Index", "Home");
             else
             {
-                var repsonse = response.Content.ReadAsStringAsync();
-                return View("Register");
+                ViewBag.error = $"{response.StatusCode} + Contate o administrador";
+                return View();
             }
         }
     }
