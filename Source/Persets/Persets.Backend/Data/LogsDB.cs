@@ -34,7 +34,7 @@ namespace Persets.Backend.Data
                     "Operation: {0} EntityDb: {1} EntityGuid: {2}",
                     operation.ToString(),
                     entityDb.ToString(),
-                    EntityGuid.ToString());
+                    EntityGuid);
                 log.DateTimeOccurence = DateTime.Now;
                 log.SuccessStatus = SuccessStatus;
                 log.PublicIP = HttpContext.Current.Request.UserHostAddress.ToString();

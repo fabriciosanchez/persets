@@ -50,13 +50,6 @@ namespace Persets.Backend.Services
             return user;
         }
 
-
-
-
-
-
-
-
         #endregion
     }
 }

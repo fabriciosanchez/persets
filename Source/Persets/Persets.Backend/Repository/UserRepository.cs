@@ -29,9 +29,5 @@ namespace Persets.Backend.Repository
         {
             return GetAll().FirstOrDefault(x => x.UserName == username);
         }
-
-
-    
-
     }
 }
