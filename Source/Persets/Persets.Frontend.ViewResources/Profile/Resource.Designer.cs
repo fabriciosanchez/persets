@@ -95,5 +95,14 @@ namespace Persets.Frontend.ViewResources.Profile {
                 return ResourceManager.GetString("Perfil", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Bem vindo.
+        /// </summary>
+        public static string Saudacao {
+            get {
+                return ResourceManager.GetString("Saudacao", resourceCulture);
+            }
+        }
     }
 }

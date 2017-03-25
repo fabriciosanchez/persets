@@ -133,4 +133,8 @@
     <value>Perfil</value>
     <comment>Perfil</comment>
   </data>
+  <data name="Saudacao" xml:space="preserve">
+    <value>Bem vindo</value>
+    <comment>Saudação</comment>
+  </data>
 </root>
