@@ -15,7 +15,7 @@ namespace Persets.Backend.Controllers
     public class UserController : ApiController
     {
         private readonly IMembershipService _membershipService;
-     
+
         public UserController(IMembershipService membershipService)
         {
             _membershipService = membershipService;
