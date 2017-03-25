@@ -11,7 +11,7 @@ namespace Persets.Frontend.Controllers
     {
         public static HttpClient client = new HttpClient();
 
-        public void Initialize()
+        public static void Initialize()
         {
             client.BaseAddress = new Uri("http://localhost:25241/");
             client.DefaultRequestHeaders.Accept.Clear();
