@@ -8,6 +8,7 @@ using Persets.Backend.Models;
 using Persets.Backend.Services;
 using Persets.Backend.Models.ViewModels;
 using Persets.Backend.Data;
+using System.Reflection;
 
 namespace Persets.Backend.Controllers
 {
@@ -60,7 +61,8 @@ namespace Persets.Backend.Controllers
             }
 
             if (response != null)
-                LogsDB.AddLog(LogsDB.eOperation.Post, LogsDB.eEntity.User, EntityGuid, response.IsSuccessStatusCode);
+                LogsDB.AddLog(MethodInfo.GetCurrentMethod().Name,
+                    LogsDB.eEntity.User, EntityGuid, response.IsSuccessStatusCode);
 
             return response;
         }
@@ -92,6 +94,10 @@ namespace Persets.Backend.Controllers
             {
                 response = request.CreateResponse(HttpStatusCode.InternalServerError, ex.Message);
             }
+
+            if (response != null)
+                LogsDB.AddLog(MethodInfo.GetCurrentMethod().Name,
+                    LogsDB.eEntity.User, user.Email, response.IsSuccessStatusCode);
 
             return response;
         }

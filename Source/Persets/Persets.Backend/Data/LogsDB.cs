@@ -23,7 +23,7 @@ namespace Persets.Backend.Data
             ContentShare
         }
 
-        public static async void AddLog(eOperation operation, eEntity entityDb, string EntityGuid, bool SuccessStatus)
+        public static async void AddLog(string operation, eEntity entityDb, string EntityGuid, bool SuccessStatus)
         {
             using (var ctx = new PersetsDBEntities())
             {
@@ -32,7 +32,7 @@ namespace Persets.Backend.Data
                 log.UserGUID = string.Empty;
                 log.Operation = string.Format(
                     "Operation: {0} EntityDb: {1} EntityGuid: {2}",
-                    operation.ToString(),
+                    operation,
                     entityDb.ToString(),
                     EntityGuid);
                 log.DateTimeOccurence = DateTime.Now;
