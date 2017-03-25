@@ -10,55 +10,57 @@ using Persets.Backend.Services;
 namespace Persets.Backend.Controllers
 {
 
-    [RoutePrefix("api/users")]
+    [AllowAnonymous]
     public class UserController : ApiController
     {
         private readonly IMembershipService _membershipService;
-
+     
         public UserController(IMembershipService membershipService)
         {
             _membershipService = membershipService;
         }
 
-        [AllowAnonymous]
-        [Route("register")]
-        [HttpPost]
-        public HttpResponseMessage Register(HttpRequestMessage request, RegistrationViewModel user)
-        {
-            HttpResponseMessage response;
 
-            try
-            {
-                if (!ModelState.IsValid)
+  
+       
+                [Route("api/users")]
+                [HttpPost]
+                public HttpResponseMessage Register(HttpRequestMessage request, RegistrationViewModel user)
                 {
-                    response = request.CreateResponse(HttpStatusCode.BadRequest, new { success = false });
-                }
-                else
-                {
-                    Users _user = _membershipService.CreateUser(user.CompleteName, user.UserName, user.Email, user.Password, user.BirthdayDate);
+                    HttpResponseMessage response;
 
-                    if (_user != null)
+                    try
                     {
-                        response = request.CreateResponse(HttpStatusCode.OK, new { success = true });
+                        if (!ModelState.IsValid)
+                        {
+                            response = request.CreateResponse(HttpStatusCode.BadRequest, new { success = false });
+                        }
+                        else
+                        {
+                            Users _user = _membershipService.CreateUser(user.CompleteName, user.UserName, user.Email, user.Password, user.BirthdayDate);
+
+                            if (_user != null)
+                            {
+                                response = request.CreateResponse(HttpStatusCode.OK, new { success = true });
+                            }
+                            else
+                            {
+                                response = request.CreateResponse(HttpStatusCode.OK, new { success = false });
+                            }
+                        }
+
+                        return response;
                     }
-                    else
+                    catch (DbUpdateException ex)
                     {
-                        response = request.CreateResponse(HttpStatusCode.OK, new { success = false });
+                        response = request.CreateResponse(HttpStatusCode.BadRequest, ex.InnerException.Message);
                     }
+                    catch (Exception ex)
+                    {
+                        response = request.CreateResponse(HttpStatusCode.InternalServerError, ex.Message);
+                    }
+
+                    return response;
                 }
-
-                return response;
-            }
-            catch (DbUpdateException ex)
-            {
-                response = request.CreateResponse(HttpStatusCode.BadRequest, ex.InnerException.Message);
-            }
-            catch (Exception ex)
-            {
-                response = request.CreateResponse(HttpStatusCode.InternalServerError, ex.Message);
-            }
-
-            return response;
-        }
     }
 }

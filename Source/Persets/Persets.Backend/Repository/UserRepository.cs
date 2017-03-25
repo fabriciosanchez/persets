@@ -3,6 +3,7 @@ using System.Linq;
 using Persets.Backend.Infrastructure;
 using Persets.Backend.Interfaces;
 using Persets.Backend.Models;
+using System.Linq.Expressions;
 
 namespace Persets.Backend.Repository
 {
@@ -28,5 +29,9 @@ namespace Persets.Backend.Repository
         {
             return GetAll().FirstOrDefault(x => x.UserName == username);
         }
+
+
+    
+
     }
 }
