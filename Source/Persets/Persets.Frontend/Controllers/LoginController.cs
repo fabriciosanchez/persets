@@ -1,6 +1,8 @@
-﻿using System;
+﻿using Persets.Frontend.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
 using System.Web;
 using System.Web.Mvc;
 
@@ -19,9 +21,36 @@ namespace Persets.Frontend.Controllers
             return View();
         }
 
+        [HttpPost]
+        public ActionResult ForgotPassword(ForgotPasswordModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                //TODO Chamada para a api
+            }
+
+            return View(model);
+        }
+
         public ActionResult LogIn ()
         {
             return RedirectToAction("Index", "Home");
+        }
+
+        public ActionResult Register()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Register(User user)
+        {
+            HttpController.Initialize();
+            var response = HttpController.client.PostAsJsonAsync("api/users", user).Result;
+            if (response.IsSuccessStatusCode)
+                return RedirectToAction("Index", "Home");
+            else
+                return View("Register");
         }
     }
 }
