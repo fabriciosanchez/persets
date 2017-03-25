@@ -193,8 +193,6 @@
     <Compile Include="Startup.cs" />
     <Compile Include="DependencyRegister.cs" />
     <Compile Include="Controllers\AccountController.cs" />
-    <Compile Include="Controllers\ContentController.cs" />
-    <Compile Include="Controllers\CategoryController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Data\PersetsDBEntities.cs" />
     <Compile Include="Infrastructure\DbFactory.cs" />
