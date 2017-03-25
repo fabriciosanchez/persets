@@ -9,6 +9,8 @@ using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Description;
 using Persets.Backend.Models;
+using Persets.Backend.Data;
+using System.Reflection;
 
 namespace Persets.Backend.Controllers
 {
@@ -39,14 +41,21 @@ namespace Persets.Backend.Controllers
         [ResponseType(typeof(void))]
         public IHttpActionResult PutCategories(string id, Categories categories)
         {
+            IHttpActionResult result = null;
+
             if (!ModelState.IsValid)
             {
-                return BadRequest(ModelState);
+                result = BadRequest(ModelState);
+            }
+            else if (id != categories.GUID)
+            {
+                result = BadRequest();
             }
 
-            if (id != categories.GUID)
+            if (result != null)
             {
-                return BadRequest();
+                LogsDB.AddLog(MethodInfo.GetCurrentMethod().Name, LogsDB.eEntity.Category, id, false);
+                return result;
             }
 
             db.Entry(categories).State = EntityState.Modified;
@@ -54,9 +63,12 @@ namespace Persets.Backend.Controllers
             try
             {
                 db.SaveChanges();
+                LogsDB.AddLog(MethodInfo.GetCurrentMethod().Name, LogsDB.eEntity.Category, id, true);
             }
             catch (DbUpdateConcurrencyException)
             {
+                LogsDB.AddLog(MethodInfo.GetCurrentMethod().Name, LogsDB.eEntity.Category, id, false);
+
                 if (!CategoriesExists(id))
                 {
                     return NotFound();
@@ -76,6 +88,7 @@ namespace Persets.Backend.Controllers
         {
             if (!ModelState.IsValid)
             {
+                LogsDB.AddLog(MethodInfo.GetCurrentMethod().Name, LogsDB.eEntity.Category, categories.GUID, false);
                 return BadRequest(ModelState);
             }
 
@@ -84,9 +97,11 @@ namespace Persets.Backend.Controllers
             try
             {
                 db.SaveChanges();
+                LogsDB.AddLog(MethodInfo.GetCurrentMethod().Name, LogsDB.eEntity.Category, categories.GUID, true);
             }
             catch (DbUpdateException)
             {
+                LogsDB.AddLog(MethodInfo.GetCurrentMethod().Name, LogsDB.eEntity.Category, categories.GUID, false);
                 if (CategoriesExists(categories.GUID))
                 {
                     return Conflict();
@@ -107,11 +122,13 @@ namespace Persets.Backend.Controllers
             Categories categories = db.Categories.Find(id);
             if (categories == null)
             {
+                LogsDB.AddLog(MethodInfo.GetCurrentMethod().Name, LogsDB.eEntity.Category, id, false);
                 return NotFound();
             }
 
             db.Categories.Remove(categories);
             db.SaveChanges();
+            LogsDB.AddLog(MethodInfo.GetCurrentMethod().Name, LogsDB.eEntity.Category, id, true);
 
             return Ok(categories);
         }

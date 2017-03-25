@@ -11,6 +11,8 @@ using System.Web.Http;
 using System.Web.Http.Description;
 using Persets.Backend.Models;
 using Persets.Backend.Models.ViewModels;
+using Persets.Backend.Data;
+using System.Reflection;
 
 namespace Persets.Backend.Controllers
 {
@@ -43,14 +45,21 @@ namespace Persets.Backend.Controllers
         [ResponseType(typeof(void))]
         public async Task<IHttpActionResult> PutContent(string id, Content content)
         {
+            IHttpActionResult result = null;
+
             if (!ModelState.IsValid)
             {
-                return BadRequest(ModelState);
+                result = BadRequest(ModelState);
+            }
+            else if (id != content.GUID)
+            {
+                result = BadRequest();
             }
 
-            if (id != content.GUID)
+            if (result != null)
             {
-                return BadRequest();
+                LogsDB.AddLog(MethodInfo.GetCurrentMethod().Name, LogsDB.eEntity.Content, id, false);
+                return result;
             }
 
             db.Entry(content).State = EntityState.Modified;
@@ -58,9 +67,11 @@ namespace Persets.Backend.Controllers
             try
             {
                 await db.SaveChangesAsync();
+                LogsDB.AddLog(MethodInfo.GetCurrentMethod().Name, LogsDB.eEntity.Content, id, true);
             }
             catch (DbUpdateConcurrencyException)
             {
+                LogsDB.AddLog(MethodInfo.GetCurrentMethod().Name, LogsDB.eEntity.Content, id, false);
                 if (!ContentExists(id))
                 {
                     return NotFound();
@@ -74,13 +85,14 @@ namespace Persets.Backend.Controllers
             return StatusCode(HttpStatusCode.NoContent);
         }
 
-        [Route("api/contents/")]        
+        [Route("api/contents/")]
         // POST: api/Contents
         [ResponseType(typeof(Content))]
         public async Task<IHttpActionResult> PostContent(Content content)
         {
             if (!ModelState.IsValid)
             {
+                LogsDB.AddLog(MethodInfo.GetCurrentMethod().Name, LogsDB.eEntity.Content, content.GUID, false);
                 return BadRequest(ModelState);
             }
 
@@ -89,9 +101,11 @@ namespace Persets.Backend.Controllers
             try
             {
                 await db.SaveChangesAsync();
+                LogsDB.AddLog(MethodInfo.GetCurrentMethod().Name, LogsDB.eEntity.Content, content.GUID, true);
             }
             catch (DbUpdateException ex)
             {
+                LogsDB.AddLog(MethodInfo.GetCurrentMethod().Name, LogsDB.eEntity.Content, content.GUID, false);
                 if (ContentExists(content.GUID))
                 {
                     return Conflict();
@@ -112,11 +126,13 @@ namespace Persets.Backend.Controllers
             Content content = await db.Content.FindAsync(id);
             if (content == null)
             {
+                LogsDB.AddLog(MethodInfo.GetCurrentMethod().Name, LogsDB.eEntity.Content, id, false);
                 return NotFound();
             }
 
             db.Content.Remove(content);
             await db.SaveChangesAsync();
+            LogsDB.AddLog(MethodInfo.GetCurrentMethod().Name, LogsDB.eEntity.Content, id, true);
 
             return Ok(content);
         }
