@@ -18,6 +18,7 @@ namespace Persets.Backend.Controllers
     {
         private PersetsDBEntities db = new PersetsDBEntities();
 
+        [Route("api/contents/")]
         // GET: api/Contents
         public IQueryable<Content> GetContent()
         {
@@ -73,6 +74,7 @@ namespace Persets.Backend.Controllers
             return StatusCode(HttpStatusCode.NoContent);
         }
 
+        [Route("api/contents/")]        
         // POST: api/Contents
         [ResponseType(typeof(Content))]
         public async Task<IHttpActionResult> PostContent(Content content)
@@ -88,7 +90,7 @@ namespace Persets.Backend.Controllers
             {
                 await db.SaveChangesAsync();
             }
-            catch (DbUpdateException)
+            catch (DbUpdateException ex)
             {
                 if (ContentExists(content.GUID))
                 {
