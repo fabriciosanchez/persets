@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Persets.Backend;
-
+using System.Net.Http;
 
 namespace Persets.Frontend.Controllers
 {
@@ -13,7 +13,16 @@ namespace Persets.Frontend.Controllers
         // GET: Categories
         public ActionResult Index()
         {
-            return View();
+            HttpController.Initialize();
+
+            var response = HttpController.client.GetAsync("api/Category").Result;
+            if (response.IsSuccessStatusCode)
+                return RedirectToAction("Index", "Home");
+            else
+            {
+                var repsonse = response.Content.ReadAsStringAsync();
+                return View("Register");
+            }
         }
     }
 }
