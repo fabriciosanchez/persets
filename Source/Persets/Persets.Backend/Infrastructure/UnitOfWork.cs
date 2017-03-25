@@ -19,6 +19,7 @@ namespace Persets.Backend.Infrastructure
 
         public void Commit()
         {
+            DbContext.SaveChanges();
             DbContext.Commit();
         }
     }

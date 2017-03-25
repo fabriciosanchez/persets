@@ -35,6 +35,7 @@ namespace Persets.Backend.Services
 
             var user = new Users
             {
+                GUID = Guid.NewGuid().ToString(),
                 CompleteName = completeName, 
                 UserName = username,
                 Email = email,
@@ -48,6 +49,13 @@ namespace Persets.Backend.Services
             _unitOfWork.Commit();
 
             return user;
+        }
+
+        public string ForgotPassword(string email)
+        {
+            var existingUser = _userRepository.GetSingleByEmail(email);
+
+            return existingUser.Password;
         }
 
         #endregion
