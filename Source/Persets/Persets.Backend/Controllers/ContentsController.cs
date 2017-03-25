@@ -6,58 +6,62 @@ using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.Description;
 using Persets.Backend.Models;
+using Persets.Backend.Models.ViewModels;
 
 namespace Persets.Backend.Controllers
 {
-    public class CategoryController : ApiController
+    public class ContentsController : ApiController
     {
         private PersetsDBEntities db = new PersetsDBEntities();
 
-        // GET: api/Category
-        public IQueryable<Categories> GetCategories()
+        [Route("api/contents/")]
+        // GET: api/Contents
+        public IQueryable<Content> GetContent()
         {
-            return db.Categories;
+            return db.Content;
         }
 
-        // GET: api/Category/5
-        [ResponseType(typeof(Categories))]
-        public IHttpActionResult GetCategories(string id)
+        // GET: api/Contents/5
+        [ResponseType(typeof(Content))]
+        public async Task<IHttpActionResult> GetContent(string id)
         {
-            Categories categories = db.Categories.Find(id);
-            if (categories == null)
+            Content content = await db.Content.FindAsync(id);
+            if (content == null)
             {
                 return NotFound();
             }
 
-            return Ok(categories);
+            return Ok(content);
         }
 
-        // PUT: api/Category/5
+        [AllowAnonymous]
+        // PUT: api/Contents/5
         [ResponseType(typeof(void))]
-        public IHttpActionResult PutCategories(string id, Categories categories)
+        public async Task<IHttpActionResult> PutContent(string id, Content content)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            if (id != categories.GUID)
+            if (id != content.GUID)
             {
                 return BadRequest();
             }
 
-            db.Entry(categories).State = EntityState.Modified;
+            db.Entry(content).State = EntityState.Modified;
 
             try
             {
-                db.SaveChanges();
+                await db.SaveChangesAsync();
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!CategoriesExists(id))
+                if (!ContentExists(id))
                 {
                     return NotFound();
                 }
@@ -70,24 +74,25 @@ namespace Persets.Backend.Controllers
             return StatusCode(HttpStatusCode.NoContent);
         }
 
-        // POST: api/Category
-        [ResponseType(typeof(Categories))]
-        public IHttpActionResult PostCategories(Categories categories)
+        [Route("api/contents/")]        
+        // POST: api/Contents
+        [ResponseType(typeof(Content))]
+        public async Task<IHttpActionResult> PostContent(Content content)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            db.Categories.Add(categories);
+            db.Content.Add(content);
 
             try
             {
-                db.SaveChanges();
+                await db.SaveChangesAsync();
             }
-            catch (DbUpdateException)
+            catch (DbUpdateException ex)
             {
-                if (CategoriesExists(categories.GUID))
+                if (ContentExists(content.GUID))
                 {
                     return Conflict();
                 }
@@ -97,23 +102,23 @@ namespace Persets.Backend.Controllers
                 }
             }
 
-            return CreatedAtRoute("DefaultApi", new { id = categories.GUID }, categories);
+            return CreatedAtRoute("DefaultApi", new { id = content.GUID }, content);
         }
 
-        // DELETE: api/Category/5
-        [ResponseType(typeof(Categories))]
-        public IHttpActionResult DeleteCategories(string id)
+        // DELETE: api/Contents/5
+        [ResponseType(typeof(Content))]
+        public async Task<IHttpActionResult> DeleteContent(string id)
         {
-            Categories categories = db.Categories.Find(id);
-            if (categories == null)
+            Content content = await db.Content.FindAsync(id);
+            if (content == null)
             {
                 return NotFound();
             }
 
-            db.Categories.Remove(categories);
-            db.SaveChanges();
+            db.Content.Remove(content);
+            await db.SaveChangesAsync();
 
-            return Ok(categories);
+            return Ok(content);
         }
 
         protected override void Dispose(bool disposing)
@@ -125,9 +130,9 @@ namespace Persets.Backend.Controllers
             base.Dispose(disposing);
         }
 
-        private bool CategoriesExists(string id)
+        private bool ContentExists(string id)
         {
-            return db.Categories.Count(e => e.GUID == id) > 0;
+            return db.Content.Count(e => e.GUID == id) > 0;
         }
     }
 }

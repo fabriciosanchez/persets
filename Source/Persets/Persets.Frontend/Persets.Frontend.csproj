@@ -504,6 +504,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Constants.cs" />
+    <Compile Include="Controllers\CategoriesController.cs" />
     <Compile Include="Controllers\GlobalController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\HttpController.cs" />
@@ -512,6 +513,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Infrastructure\Filters\LanguageFilterAttribute.cs" />
+    <Compile Include="Models\CategoriesModel.cs" />
     <Compile Include="Models\IndexModel.cs" />
     <Compile Include="Models\ForgotPasswordModel.cs" />
     <Compile Include="Models\User.cs" />
@@ -707,6 +709,8 @@
       <SubType>Designer</SubType>
     </None>
     <Content Include="Views\Shared\DisplayTemplates\BootstrapMenuHelperModel.cshtml" />
+    <Content Include="Views\Categories\Index.cshtml" />
+    <Content Include="Views\Login\Register.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -715,6 +719,10 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Persets.Backend\Persets.Backend.csproj">
+      <Project>{369ce9d5-ae04-4468-b3a4-21f0159e91a0}</Project>
+      <Name>Persets.Backend</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Persets.Frontend.ViewResources\Persets.Frontend.ViewResources.csproj">
       <Project>{9ad8ff50-f061-4add-af4e-2f97ae32471a}</Project>
       <Name>Persets.Frontend.ViewResources</Name>
