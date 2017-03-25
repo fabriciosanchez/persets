@@ -1,4 +1,4 @@
-﻿@{ 
+﻿@{
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <body class="nav-md">
@@ -18,3 +18,8 @@
         </div>
     </div>
 </body>
+
+@section scripts
+{
+    @RenderSection("scripts", false)
+}
