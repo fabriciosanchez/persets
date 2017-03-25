@@ -23,5 +23,10 @@ namespace Persets.Frontend.Controllers
         {
             return RedirectToAction("Index", "Home");
         }
+
+        public ActionResult Register()
+        {
+            return View();
+        }
     }
 }
