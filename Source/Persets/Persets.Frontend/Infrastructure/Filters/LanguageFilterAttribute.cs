@@ -14,8 +14,8 @@ namespace Persets.Frontend.Infrastructure.Filters
             string currentLanguage = currentSession != null ? currentSession.ToString() : Constants.DefaultLanguage;
 
             List<SelectListItem> avaliableLanguages = new List<SelectListItem>();
-            avaliableLanguages.Add(new SelectListItem() { Text = Resource.EnglishLanguageName, Value = "en-US", Selected = (currentLanguage == "en-US") });
-            avaliableLanguages.Add(new SelectListItem() { Text = Resource.PortugueseLanguageName, Value = "pt-BR", Selected = (currentLanguage == "pt-BR") });
+            avaliableLanguages.Add(new SelectListItem() { Text = Resource.EnglishLanguageName, Value = "en", Selected = (currentLanguage == "en") });
+            avaliableLanguages.Add(new SelectListItem() { Text = Resource.PortugueseLanguageName, Value = "pt", Selected = (currentLanguage == "pt") });
             filterContext.Controller.ViewBag.AvaliableLanguages = avaliableLanguages;
         }
     }

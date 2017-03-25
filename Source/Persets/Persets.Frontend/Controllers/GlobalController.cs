@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Globalization;
-using System.Linq;
+﻿using System.Globalization;
 using System.Threading;
-using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
 
@@ -17,17 +13,30 @@ namespace Persets.Frontend.Controllers
         {
             base.Initialize(requestContext);
 
-            if (Session[Constants.CurrentCulture] != null)
+            string languageRoute = requestContext.RouteData.Values["lang"] != null ? requestContext.RouteData.Values["lang"].ToString() : string.Empty;
+
+            if (CurrentCulture != languageRoute)
             {
-                Thread.CurrentThread.CurrentCulture = new CultureInfo(CurrentCulture);
-                Thread.CurrentThread.CurrentUICulture = new CultureInfo(CurrentCulture);
+                CurrentCulture = languageRoute;
+                Thread.CurrentThread.CurrentCulture = new CultureInfo(GetCurrentCulture(CurrentCulture));
+                Thread.CurrentThread.CurrentUICulture = new CultureInfo(GetCurrentCulture(CurrentCulture));
             }
         }
 
         public ActionResult ChangeLanguage(string language, string currentUrl)
         {
             CurrentCulture = language;
-            return Redirect(currentUrl);
+
+            if (!string.IsNullOrEmpty(currentUrl))
+            {
+                string[] paths = currentUrl.Split('/');
+                currentUrl = string.Empty;
+
+                for (int i = 0; i < paths.Length; i++)
+                    if (i != 1 && !currentUrl.EndsWith("/")) currentUrl += "/" + paths[i];
+            }
+
+            return Redirect("/" + language + currentUrl);
         }
 
         protected string CurrentCulture
@@ -44,6 +53,19 @@ namespace Persets.Frontend.Controllers
             set
             {
                 Session[Constants.CurrentCulture] = value;
+            }
+        }
+
+        private string GetCurrentCulture(string language)
+        {
+            switch (language)
+            {
+                case "en":
+                    return "en-US";
+                case "pt":
+                    return "pt-BR";
+                default:
+                    return "en-US";
             }
         }
     }

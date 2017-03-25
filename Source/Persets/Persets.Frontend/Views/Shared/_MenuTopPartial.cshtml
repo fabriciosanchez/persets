@@ -33,7 +33,7 @@
                             @using (Html.BeginForm("ChangeLanguage", "Global", new { }, FormMethod.Post, new { @id = "language-form" }))
                             {
                                 @Html.DropDownList("language", ViewBag.AvaliableLanguages as List<SelectListItem>, (Resource.DropdownSelectLanguage + " ..."), new { @class = "form-control" })
-                                @Html.Hidden("currentUrl", Request.Url)
+                                @Html.Hidden("currentUrl", Request.Url.PathAndQuery)
                             }
                         </li>
                     </ul>
