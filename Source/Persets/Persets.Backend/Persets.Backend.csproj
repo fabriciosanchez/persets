@@ -182,6 +182,7 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Data\LogsDB.cs" />
     <Compile Include="UnityResolverHelper.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="DependencyRegister.cs" />
